@@ -1,0 +1,45 @@
+#!/bin/bash
+ 
+./ufs format
+./ufs ls /
+./ufs ls /doc
+./ufs mkdir /new
+./ufs mkdir /empty
+./ufs mkdir /notempty
+./ufs mkdir /existepas/new
+./ufs create /notempty/c.txt
+./ufs create /b.txt
+./ufs create /existepas/b.txt
+./ufs ls /
+./ufs ls /notempty
+./ufs rm /notempty
+./ufs ls /
+./ufs mv /new /empty
+./ufs mv /existepas nulpart
+./ufs mv /b.txt nulpart
+./ufs rm /notempty/c.txt
+./ufs rm /notempty
+./ufs ls /
+./ufs rm /a.txt
+./ufs ls /
+
+for i in {1..20}
+do
+	./ufs create /d.txt
+	./ufs rm /d.txt
+done
+
+for i in {1..20}
+do
+	./ufs create /h.txt
+	./ufs ln /h.txt /hln.txt
+	./ufs rm /h.txt
+	./ufs rm /hln.txt
+done
+
+for i in {1..20}
+do
+	./ufs mkdir /loop
+	./ufs rm /loop
+done
+
